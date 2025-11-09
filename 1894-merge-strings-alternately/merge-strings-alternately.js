@@ -4,20 +4,13 @@
  * @return {string}
  */
 var mergeAlternately = function(word1, word2) {
-    let arrword1 = word1.split("").join(" ").split("")
-    let arrword2 = [" ", ...word2.split("").join(" ").split("")]
-    
+    let result = '';
+  let maxLen = Math.max(word1.length, word2.length);
 
-let w1 = arrword1.filter(ch => ch.trim() !== '');
-let w2 = arrword2.filter(ch => ch.trim() !== '');
+  for (let i = 0; i < maxLen; i++) {
+    if (word1[i]) result += word1[i];
+    if (word2[i]) result += word2[i];
+  }
 
-let result = '';
-
-// gabungkan selang-seling
-for (let i = 0; i < Math.max(w1.length, w2.length); i++) {
-  if (w1[i]) result += w1[i];
-  if (w2[i]) result += w2[i];
-}
-
-return result
+  return result;
 };
