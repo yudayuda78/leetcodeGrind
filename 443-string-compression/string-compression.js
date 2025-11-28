@@ -3,29 +3,30 @@
  * @return {number}
  */
 var compress = function(chars) {
-    let write = 0;
-    let read = 0;
-
-    while (read < chars.length) {
-        let char = chars[read];
-        let count = 0;
-
-     
-        while (read < chars.length && chars[read] === char) {
-            read++;
-            count++;
+    let result = []
+    let i = 0
+    let writeIndex = 0
+    while(i < chars.length){
+        read = 0
+        write = chars[i]
+        while(chars[i] === write){
+            read++
+            i++
         }
 
- 
-        chars[write++] = char;
+        const stringRead = String(read)
 
+        chars[writeIndex] = write
+        writeIndex++
 
-        if (count > 1) {
-            for (let c of String(count)) {
-                chars[write++] = c;
+        if (read > 1) {
+            for (let digit of stringRead) {
+                chars[writeIndex] = digit
+                writeIndex++
             }
         }
-    }
 
-    return write; 
+        
+    }
+    return writeIndex
 };
